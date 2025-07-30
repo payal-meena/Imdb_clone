@@ -1,5 +1,5 @@
 import React from "react";
-// import add_icon from '../assets/add_icon2.png'
+// import add_icon from '../assets/add_icon.png'
 // import remove_icon from '../assets/remove_icon.png'
 import add_icon from "../assets/heart_icon.jpg";
 import remove_icon from "../assets/fill_heart_icon.jpg";
