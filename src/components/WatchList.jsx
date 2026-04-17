@@ -45,7 +45,7 @@ function WatchList({ watchlist, handleRemoveFromWatchList, setWatchList }) {
               key={genre}
               onClick={() => handleFilter(genre)}
               className={
-                currGenre == genre
+                currGenre === genre
                   ? "hover:cursor-pointer flex justify-center items-center h-[2rem] p-3 m-2 rounded-lg bg-blue-400  text-white font-semibold "
                   : "hover:cursor-pointer flex justify-center items-center h-[2rem] p-3 m-2 rounded-lg bg-gray-400  text-white font-semibold"
               }
@@ -67,6 +67,9 @@ function WatchList({ watchlist, handleRemoveFromWatchList, setWatchList }) {
       </div>
 
       <div className="overflow-hidden rounded-lg border border-gray-200 m-8">
+        {watchlist.length === 0 ? (
+          <div className="text-center text-gray-400 py-16 text-lg">Your watchlist is empty! Add some movies 🎬</div>
+        ) : (
         <table className="w-full text-gray-500  text-center">
           <thead className="border-b-2 border-gray-200 text-black font-bold">
             <tr>
@@ -94,10 +97,10 @@ function WatchList({ watchlist, handleRemoveFromWatchList, setWatchList }) {
           <tbody>
             {watchlist
               .filter((movieObj) => {
-                if (currGenre == "All Genres") {
+                if (currGenre === "All Genres") {
                   return true;
                 } else {
-                  return genreids[movieObj.genre_ids[0]] == currGenre;
+                  return genreids[movieObj.genre_ids[0]] === currGenre;
                 }
               })
               .filter((movieObj) => {
@@ -132,6 +135,7 @@ function WatchList({ watchlist, handleRemoveFromWatchList, setWatchList }) {
               })}
           </tbody>
         </table>
+        )}
       </div>
     </>
   );

@@ -23,9 +23,13 @@ const banners = [
 const [banner, setBanner] = useState(banners[0]);
 
 useEffect(() => {
-    const random = Math.floor(Math.random() * banners.length);
-    setBanner(banners[random]);
-  }, []);
+  let index = 0;
+  const interval = setInterval(() => {
+    index = (index + 1) % banners.length;
+    setBanner(banners[index]);
+  }, 5000);
+  return () => clearInterval(interval);
+}, []);
 
   return (
     <div className='h-[80vh] bg-center bg-cover flex items-end 'style={{backgroundImage:`url(${banner.img})`}}>

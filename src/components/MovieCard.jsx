@@ -12,17 +12,13 @@ function MovieCard({
   handleRemoveFromWatchList,
   watchlist,
 }) {
-  function doesContain(movieObj) {
-    for (let i = 0; i < watchlist.length; i++) {
-      if (watchlist[i].id == movieObj.id) {
-        return true;
-      }
-    }
-    return false;
-  }
+  const doesContain = (movieObj) => watchlist.some((m) => m.id === movieObj.id);
   return (
     <div
-      className="h-[50vh] w-[160px] bg-center bg-cover rounded-xl hover:scale-110 duration-300 hover:cursor-pointer flex items-end mb-4 relative"
+      className="w-full max-w-[210px] h-[45vh] sm:h-[48vh] md:h-[50vh]
+             bg-center bg-cover rounded-xl 
+             hover:scale-105 duration-300 hover:cursor-pointer 
+             flex items-end mb-4 relative"
       style={{
         backgroundImage: `url(https://image.tmdb.org/t/p/w500/${poster_path})`,
         willChange: "transform",
